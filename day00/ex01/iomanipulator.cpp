@@ -48,20 +48,18 @@ void	PhoneBook::format_output(void)
 
 void	PhoneBook::display_contact(Contact contact, int index)
 {
-	std::cout << "Index         --/::/: " << std::setw(10) << index << std::endl;
-	std::cout << "First name    --/::/: "<< std::setw(10) << contact.first_name << std::endl;
-	std::cout << "Last name     --/::/: "<< std::setw(10) << contact.last_name << std::endl;
-	std::cout << "Nickname      --/::/: "<< std::setw(10) << contact.nick_name << std::endl;
-	std::cout << "Phone number  --/::/: "<< std::setw(10) << contact.phone_number << std::endl;
-	std::cout << "Darkest secre --/::/: "<< std::setw(10) << contact.phone_number << std::endl;
+	std::cout << "Index         --/::/: " << index << std::endl;
+	std::cout << "First name    --/::/: " << contact.first_name << std::endl;
+	std::cout << "Last name     --/::/: " << contact.last_name << std::endl;
+	std::cout << "Nickname      --/::/: " << contact.nick_name << std::endl;
+	std::cout << "Phone number  --/::/: " << contact.phone_number << std::endl;
+	std::cout << "Darkest secre --/::/: " << contact.phone_number << std::endl;
 }
 
 void	PhoneBook::clear_buffer(void)
 {
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
-
-
 
 void	PhoneBook::add()
 {
@@ -103,7 +101,7 @@ void	PhoneBook::search(void)
 		std::cin.clear();
 		exit();
 	}
-	if (requested_index >= size)
+	if (requested_index < 0 || requested_index >= size)
 	{
 		std::cout  << "Invaid Entry !! Index out of range" << std::endl;
 		return ;

@@ -22,6 +22,11 @@ class PhoneBook
 		int		index_oldest;
 
 	public:
+		PhoneBook()
+		{
+			size = 0;
+			index_oldest = 0;
+		}
 		int			get_fields(Contact& contact);
 		void		format_output(void);
 		void		clear_buffer(void);
