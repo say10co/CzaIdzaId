@@ -1,15 +1,13 @@
 #include <iostream>
-#include "external/Account.hpp"
+#include "Account.hpp"
 
-void	Account::displayAccountsInfos(void)
+
+Account::Account( int initial_deposit )
 {
-	
+	(void) initial_deposit;
+  	std::cout << "Time Stamp" << " index:" << _accountIndex++ << std::endl;
 }
-
-int main(int ac,  char	**av)
+Account::~Account()
 {
-	(void)ac;
-	(void)av;
-	return (0);
+	std::cout << "distroyed" << std::endl;
 }
-
