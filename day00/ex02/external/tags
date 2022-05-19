@@ -1,0 +1,5 @@
+Mtests.cpp	tests.cpp	/^int		main( void ) {$/
+acc_int_t	tests.cpp	/^	typedef std::pair<accounts_t::iterator, ints_t::i/
+accounts_t	tests.cpp	/^	typedef std::vector<Account::t>							  accounts_/
+ints_t	tests.cpp	/^	typedef std::vector<int>								  ints_t;$/
+t	Account.cpp	/^	typedef Account		t;$/
