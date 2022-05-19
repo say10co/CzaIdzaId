@@ -1,6 +1,10 @@
 NAME = ex02 
 
+<<<<<<< HEAD
 SRC = not.cpp tests.cpp
+=======
+SRC = tests.cpp Account.cpp
+>>>>>>> 921450a84c604d586c4a5fbab305265807c848ba
 
 FLAGS = -Wall -Werror -Wextra
 
@@ -17,3 +21,7 @@ clean:
 	rm -rf $(NAME)
 
 re: clean all
+<<<<<<< HEAD
+=======
+
+>>>>>>> 921450a84c604d586c4a5fbab305265807c848ba

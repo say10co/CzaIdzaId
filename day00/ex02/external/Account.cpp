@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Account.hpp"
+<<<<<<< HEAD
 
 //initialising static member varivbles
 int	Account::_nbAccounts  = 0;
@@ -20,9 +21,13 @@ Account::Account( int initial_deposit )
 	std::cout << "amount:" << _amount << ";";
 	std::cout << "created;" << std::endl;
 }
+=======
+>>>>>>> 921450a84c604d586c4a5fbab305265807c848ba
 
-void	Account::displayAccountsInfos(void)
+
+Account::Account( int initial_deposit )
 {
+<<<<<<< HEAD
 	std::cout << "Time Stamp ";
 	std::cout << "accounts:" << _nbAccounts << ";";
 	std::cout << "total:" << _totalAmount << ";";
@@ -104,3 +109,12 @@ int	Account::getNbWithdrawals(void)
 	return (Account::_nbWithdrawals);
 }
 */
+=======
+	(void) initial_deposit;
+  	std::cout << "Time Stamp" << " index:" << _accountIndex++ << std::endl;
+}
+Account::~Account()
+{
+	std::cout << "distroyed" << std::endl;
+}
+>>>>>>> 921450a84c604d586c4a5fbab305265807c848ba
