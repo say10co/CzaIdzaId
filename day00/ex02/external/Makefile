@@ -1,6 +1,6 @@
 NAME = ex02 
 
-SRC = not.cpp tests.cpp
+SRC = Account.cpp tests.cpp
 
 FLAGS = -Wall -Werror -Wextra
 
