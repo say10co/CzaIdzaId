@@ -1,6 +1,6 @@
-NAME =  
+NAME = bsp 
 
-SRC =  
+SRC =  Point.cpp FixedPoint/src/Fixed.cpp main.cpp
 
 OBJ = ${SRC:%.cpp=%.o}
 
