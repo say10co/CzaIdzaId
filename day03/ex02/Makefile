@@ -1,7 +1,6 @@
+NAME = ex02 
 
-NAME =  ex01 
-
-SRC =  ClapTrap/src/Claptrap.cpp  src/ScavTrap.cpp src/main.cpp
+SRC = ClapTrap/src/Claptrap.cpp ScavTrap/src/ScavTrap.cpp src/FragTrap.cpp src/main.cpp 
 
 OBJ = ${SRC:%.cpp=%.o}
 
