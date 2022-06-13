@@ -38,7 +38,7 @@ ClapTrap::ClapTrap(const std::string &name)
 	: __name(name),  __hit_point(Default_hitpoints)
 	  , __energy_point(Default_energypoints), __attack_damage(Default_attackdamage)  
 {
-
+	std::cout << "(ClapTrap) Paramiterised constructor Called!" << std::endl;
 }
 
 void	ClapTrap::operator=(const ClapTrap &C)

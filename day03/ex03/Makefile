@@ -1,10 +1,11 @@
-NAME = ex02 
 
-SRC = ClapTrap/src/Claptrap.cpp src/FragTrap.cpp src/main.cpp 
+NAME = ex03 
+
+SRC = src/DiamondTrap.cpp  src/main.cpp FragTrap/src/FragTrap.cpp ScavTrap/src/ScavTrap.cpp ClapTrap/src/Claptrap.cpp 
 
 OBJ = ${SRC:%.cpp=%.o}
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra #-Wshadow-all
 
 COMPILER = c++
 

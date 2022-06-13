@@ -3,19 +3,20 @@
 
 int main()
 {
-	FragTrap s0;
-	s0.set_name("S0");
+	FragTrap s;
+	FragTrap s0("Frag0");
+	FragTrap s1("Frag1");
+	FragTrap s2(s1);
 
-	FragTrap s1;
-	s1.set_name("S1");
-
+	s.status();
 	s0.status();
 	s1.status();
+	s2.status();
 
-	s0.guardGate();
-	s1.guardGate();
+	s0.highFivesGuys();
+	s1.highFivesGuys();
 	
-	s1.attack("Scav S0");
+	s1.attack("Frag0");
 	s0.takeDamage(s1.get_attack_damage());
 	
 	s0.status();

@@ -15,22 +15,26 @@
 
 #include <iostream>
 
-typedef const unsigned int uint_ct;
 
 class ClapTrap
 {
 	private:
+		static const unsigned int Default_hitpoints = 10;
+		static const unsigned int Default_energypoints = 10;
+		static const unsigned int Default_attackdamage = 0;
+
+	protected:
 		std::string 			__name; 
 		unsigned int			__hit_point;
 		unsigned int			__energy_point;
 		unsigned int			__attack_damage;
+
 
 	public:
 		ClapTrap();
 		~ClapTrap();
 		ClapTrap(const ClapTrap &C);
 		ClapTrap(const std::string &_name);
-		ClapTrap(const std::string &name, uint_ct hp, uint_ct ep, uint_ct ad);
 
 		void	operator=(const ClapTrap &C);
 
@@ -39,17 +43,9 @@ class ClapTrap
 		void beRepaired(unsigned int amount);
 		
 		unsigned int	get_attack_damage(void) const;
-		void	set_attack_damage(uint_ct damage);
+		void	set_attack_damage(unsigned int damage);
 
 		const std::string &get_name(void) const;
-		void	set_name(const std::string &name);
-
-		unsigned int get_hit_point(void) const;
-		void	set_hit_point(uint_ct hitpoint);
-
-		unsigned int get_energy_point(void) const;
-		void	set_energy_point(uint_ct enegy_point);
-
 		void	status(void);
 
 };

@@ -1,7 +1,7 @@
 #ifndef SCAVETRAP_HPP
 # define SCAVETRAP_HPP 
 
-#include "../ClapTrap/inc/ClapTrap.hpp"
+#include "../../ClapTrap/inc/ClapTrap.hpp"
 
 class ScavTrap: virtual public ClapTrap
 {
@@ -16,7 +16,7 @@ class ScavTrap: virtual public ClapTrap
 		ScavTrap(const ScavTrap &clap);
 		ScavTrap(const std::string &name);
 		ScavTrap &operator=(const ScavTrap  &scav);
-
+		
 		void	attack(const std::string &target);
 		void guardGate();
 };

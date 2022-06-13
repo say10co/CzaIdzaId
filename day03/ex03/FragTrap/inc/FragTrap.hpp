@@ -1,7 +1,7 @@
 #ifndef FRAGTRAP_HPP
 # define FRAGTRAP_HPP 
 
-#include "../ClapTrap/inc/ClapTrap.hpp"
+#include "../../ClapTrap/inc/ClapTrap.hpp"
 
 class FragTrap: virtual public ClapTrap
 {

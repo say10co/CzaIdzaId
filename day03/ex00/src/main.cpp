@@ -15,26 +15,28 @@
 
 int main(void)
 {
-	ClapTrap	player1("P1");
-	ClapTrap	player2("P2");
+	ClapTrap	player1("Clap1");
+	ClapTrap	player2("Clap2");
 
+	player1.status();
+	player2.status();
 
 	player1.set_attack_damage(3);
 	player2.set_attack_damage(5);
 
-	player1.attack("player2");
+	player1.attack("Clap2");
 	player2.takeDamage(player1.get_attack_damage());
 	player2.status();
 
-	player2.attack("player1");
+	player2.attack("Clap1");
 	player1.takeDamage(player2.get_attack_damage());
 	player1.status();
 
-	player2.attack("player1");
+	player2.attack("Clap1");
 	player1.takeDamage(player2.get_attack_damage());
 	player1.status();
 
-	player2.attack("player1");
+	player2.attack("Clap1");
 	player1.takeDamage(player2.get_attack_damage());
 	player1.status();
 	return (0);

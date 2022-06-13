@@ -57,3 +57,4 @@ void ScavTrap::attack(const std::string& target)
 	else
 		std::cout << "Attack Failed!"  << std::endl;
 }
+
