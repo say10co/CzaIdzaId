@@ -4,11 +4,13 @@
 Animal::Animal()
 	: __type("Animal")
 {
+	__brain = new Brain();
 	std::cout << "(Animal) Constructor called!" << std::endl;
 }
 
 Animal::~Animal()
 {
+	delete __brain;
 	std::cout << "(Animal) Distructor called!" << std::endl;
 }
 
@@ -35,3 +37,12 @@ void	Animal::makeSound(void) const
 	std::cout << this->__type << " says ?????" << std::endl; 
 }
 
+void	Animal::think(const std::string &idea) const
+{
+	__brain->set_idea(idea);
+}
+
+void	Animal::expose_ideas(void) const
+{
+	__brain->get_ideas();
+}
