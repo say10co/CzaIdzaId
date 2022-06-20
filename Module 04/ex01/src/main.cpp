@@ -6,7 +6,7 @@
 /*   By: adriouic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:44:10 by adriouic          #+#    #+#             */
-/*   Updated: 2022/06/19 14:48:44 by adriouic         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:38:47 by adriouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,28 @@ int main(void)
 	const std::string	 fun = std::string("Fun");
 	const std::string	 sleep = std::string("sleep");
 
-	std::cout << "-------------------" << std::endl;
-
 	cat->think(food);
 	cat->think(fun);
 	dog->think(sleep);
+
+	std::cout << "-------------------" << std::endl;
+
 	cat->expose_ideas();
 	dog->expose_ideas();
 
 	std::cout << "\n----------* making DeepCopies *------------\n" << std::endl;
 
 	Dog	 *new_dog  = new Dog();
-	Dog	*big_dog = new Dog(*new_dog);
-	Animal	*big_cat = new Cat();
+	Dog	*copy_dog = new Dog(*new_dog);
+	Animal	*new_cat = new Cat();
 
-	*big_cat = *cat;
+	*new_cat = *cat;
 
-	big_cat->expose_ideas();
-	big_dog->expose_ideas();
+	new_cat->expose_ideas();
+	copy_dog->expose_ideas();
 
-	delete big_dog;
-	delete big_cat;
+	delete copy_dog;
+	delete new_cat;
 	delete new_dog; //proves deep copy
 
 	std::cout << "\n----------*  Distruction of array *------------\n" << std::endl;
@@ -72,6 +73,5 @@ int main(void)
 	delete cat;
 	delete dog;
 
-	system("leaks ex01");
 	return (0);
 }

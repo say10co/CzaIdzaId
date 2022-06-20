@@ -12,9 +12,10 @@ Cat::~Cat()
 }
 
 Cat::Cat(const Cat & cat)
+	:Animal()
 {
 	std::cout << "(Cat) copy constructor called";
-	this->__type = cat.__type;
+	*(this) = cat;
 }
 
 void	Cat::makeSound(void) const

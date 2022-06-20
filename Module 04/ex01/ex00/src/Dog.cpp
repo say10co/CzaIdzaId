@@ -12,9 +12,11 @@ Dog::~Dog()
 }
 
 Dog::Dog(const Dog & dog)
+	:Animal()
 {
 	std::cout << "(Dog) copy constructor called";
-	this->__type = dog.__type;
+	*this = dog;
+
 }
 
 void	Dog::makeSound(void) const
