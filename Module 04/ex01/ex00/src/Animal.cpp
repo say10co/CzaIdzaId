@@ -24,6 +24,7 @@ Animal	&Animal::operator=(const Animal & animal)
 {
 	std::cout << "(Animal) operator overload called!" << std::endl;
 	this->__type = animal.__type; 
+	*(this->__brain) = *(animal.__brain);
 	return (*this);
 }
 

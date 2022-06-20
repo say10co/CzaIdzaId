@@ -17,38 +17,61 @@
 
 #include <iostream>
 
-
 int main(void)
 {
 
 	std::cout << "\n-----------* Construction *---------\n" << std::endl;
 
 	const Animal *cat = new Cat();
-	const Animal *big_cat = new Cat();
 	const Animal *dog = new Dog();
-
+	
 	const std::string	 food = std::string("food");
 	const std::string	 fun = std::string("Fun");
 	const std::string	 sleep = std::string("sleep");
 
-	std::cout << "\n----------* making DeepCopies *------------\n" << std::endl;
-	
+	std::cout << "-------------------" << std::endl;
+
 	cat->think(food);
 	cat->think(fun);
-
 	dog->think(sleep);
-
 	cat->expose_ideas();
 	dog->expose_ideas();
 
-	big_cat = cat;
+	std::cout << "\n----------* making DeepCopies *------------\n" << std::endl;
 
-	cat->expose_ideas();
+	Dog	 *new_dog  = new Dog();
+	Dog	*big_dog = new Dog(*new_dog);
+	Animal	*big_cat = new Cat();
+
+	*big_cat = *cat;
+
+	big_cat->expose_ideas();
+	big_dog->expose_ideas();
+
+	delete big_dog;
+	delete big_cat;
+	delete new_dog; //proves deep copy
+
+	std::cout << "\n----------*  Distruction of array *------------\n" << std::endl;
+
+	int	nb_animals = 4;
+	Animal	**array = new Animal*[nb_animals];
+
+	array[0] = new Cat();
+	array[1] = new Cat();
+	array[2] = new Dog();
+	array[3] = new Dog();
+
+
+	for (int i = 0; i < nb_animals; i++)
+		delete array[i];
+	delete [] array;
 
 	std::cout << "\n----------*  Distruction *------------\n" << std::endl;
 
 	delete cat;
 	delete dog;
-	delete big_cat;
+
+	system("leaks ex01");
 	return (0);
 }

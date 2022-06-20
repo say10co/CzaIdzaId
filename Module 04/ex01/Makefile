@@ -3,7 +3,7 @@ NAME = ex01
 
 EX00_SRC = ex00/src/Animal.cpp ex00/src/Cat.cpp ex00/src/Dog.cpp ex00/src/WrongAnimal.cpp ex00/src/WrongCat.cpp
 
-SRC =  src/main.cpp src/Brain.cpp
+SRC =  main.cpp src/Brain.cpp
 
 OBJ = ${SRC:%.cpp=%.o} ${EX00_SRC:%.cpp=%.o}
 
