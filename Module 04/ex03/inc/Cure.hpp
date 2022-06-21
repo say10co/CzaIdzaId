@@ -10,10 +10,11 @@ class Cure : public AMateria
 	public:
 		Cure();
 		~Cure();
-		Cure &Cure(const Cure & cure);
+		Cure(const Cure & cure);
 		Cure &operator=(const Cure &cure);
 
-		AMateria* clone(void) const;
+		Cure* clone(void) const;
+		void use(ICharacter& target);
 };
 
 #endif /* CURE_HPP */
