@@ -14,8 +14,10 @@ MateriaSource::~MateriaSource()
 }
 
 MateriaSource::MateriaSource(const MateriaSource & materiasource)
-	//:MateriaSource()
+	:__nb_materias(0)
 {
+	for (int i = 0; i < __max_materias; i++)
+		__materias[i] = NULL;
 	*this = materiasource;
 }
 
@@ -25,8 +27,12 @@ MateriaSource & MateriaSource::operator=(const MateriaSource & materiasource)
 	for (int i = 0; i < __max_materias; i++)
 	{
 		if (__materias[i])
+		{
 			delete __materias[i];
-		__materias[i] = materiasource.__materias[i];
+			__materias[i] = NULL;
+		}
+		if (materiasource.__materias[i])
+			__materias[i] = (materiasource.__materias[i])->clone();
 	}
 	return (*this);
 }
@@ -35,8 +41,8 @@ void MateriaSource::learnMateria(AMateria *m)
 {
 	if (this->__nb_materias != __max_materias)
 	{
-		this->__materias[this->__nb_materias -1] = m->clone();
 		this->__nb_materias++;
+		this->__materias[this->__nb_materias -1] = m->clone();
 	}	
 }
 

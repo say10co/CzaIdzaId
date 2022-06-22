@@ -26,7 +26,7 @@ Ice *Ice::clone() const
 {
 	Ice *ret;
 
-	ret = new Ice();
+	ret = new Ice(*this);
 	return (ret);
 }
 

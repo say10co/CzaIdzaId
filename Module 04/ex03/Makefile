@@ -1,11 +1,11 @@
 
 NAME =  ex03
 
-SRC = src/AMateria.cpp src/Character.cpp src/Cure.cpp src/ICharacter.cpp src/IMateriaSource.cpp src/Ice.cpp src/MateriaSource.cpp  src/main.cpp
+SRC = src/AMateria.cpp src/Character.cpp src/Cure.cpp src/ICharacter.cpp src/IMateriaSource.cpp src/Ice.cpp src/MateriaSource.cpp  src/main.cpp 
 
 OBJ = ${SRC:%.cpp=%.o}
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra #-fsanitize=address
 
 COMPILER = c++
 

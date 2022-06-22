@@ -26,11 +26,11 @@ Cure *Cure::clone() const
 {
 	Cure *ret;
 
-	ret = new Cure();
+	ret = new Cure(*this);
 	return (ret);
 }
 
 void	Cure::use(ICharacter& target)
 {
-	std::cout << "* heals" <<  target.getName() << "'s wounds *" << std::endl;
+	std::cout << "* heals " <<  target.getName() << "'s wounds *" << std::endl;
 }
