@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adriouic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 20:01:50 by adriouic          #+#    #+#             */
-/*   Updated: 2022/06/22 20:07:16 by adriouic         ###   ########.fr       */
+/*   Updated: 2022/06/22 20:40:01 by adriouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP 
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP 
 
 #include <iostream>
 
 #include "../../inc/Brain.hpp"
 
-class Animal
+class AAnimal
 {
 	protected:
 		std::string __type;
 	public:
-		Animal();
-		virtual ~Animal();
-		Animal(const Animal &animal);
-		Animal &operator=(const Animal &animal);
+		AAnimal();
+		virtual ~AAnimal();
+		AAnimal(const AAnimal &animal);
+		AAnimal &operator=(const AAnimal &animal);
 		
-		virtual void	makeSound(void) const;
 		const std::string &getType(void) const;
 
+		virtual void	makeSound(void) const = 0;
 		virtual Brain *getBrain(void) const = 0 ;
 };
 
-#endif /* ANIMAL_HPP */
+#endif /* AANIMAL_HPP */

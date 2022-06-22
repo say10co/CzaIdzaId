@@ -1,11 +1,11 @@
 
 NAME = ex02 
 
-EX00_SRC = ex00/src/AAnimal.cpp ex00/src/Cat.cpp ex00/src/Dog.cpp ex00/src/WrongAnimal.cpp ex00/src/WrongCat.cpp
+ex01_SRC = ex01/ex00/src/AAnimal.cpp ex01/ex00/src/Cat.cpp ex01/ex00/src/Dog.cpp ex01/ex00/src/WrongAnimal.cpp ex01/ex00/src/WrongCat.cpp
 
 SRC =  src/main.cpp src/Brain.cpp
 
-OBJ = ${SRC:%.cpp=%.o} ${EX00_SRC:%.cpp=%.o}
+OBJ = ${SRC:%.cpp=%.o} ${ex01_SRC:%.cpp=%.o}
 
 FLAGS = -Wall -Werror -Wextra
 

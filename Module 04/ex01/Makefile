@@ -7,7 +7,7 @@ SRC =  src/main.cpp src/Brain.cpp
 
 OBJ = ${SRC:%.cpp=%.o} ${EX00_SRC:%.cpp=%.o}
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra #-fsanitize=address
 
 COMPILER = c++
 

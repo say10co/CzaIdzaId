@@ -6,20 +6,21 @@
 /*   By: adriouic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 14:44:10 by adriouic          #+#    #+#             */
-/*   Updated: 2022/06/20 18:56:18 by adriouic         ###   ########.fr       */
+/*   Updated: 2022/06/22 20:48:33 by adriouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ex00/inc/AAnimal.hpp"
-#include "../ex00/inc/Cat.hpp"
-#include "../ex00/inc/Dog.hpp"
+#include "../ex01/ex00/inc/AAnimal.hpp"
+#include "../ex01/ex00/inc/Cat.hpp"
+#include "../ex01/ex00/inc/Dog.hpp"
 #include "../inc/Brain.hpp"
 
 #include <iostream>
 
 int main(void)
 {
-
+	//AAnimal test;
+	
 	std::cout << "\n-----------* Construction *---------\n" << std::endl;
 	Dog	*dog = new Dog();
 	Dog copy_dog(*dog);

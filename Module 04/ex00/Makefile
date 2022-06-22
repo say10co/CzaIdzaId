@@ -5,7 +5,7 @@ SRC =  src/Animal.cpp src/Cat.cpp src/Dog.cpp src/main.cpp src/WrongAnimal.cpp s
 
 OBJ = ${SRC:%.cpp=%.o}
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra 
 
 COMPILER = c++
 

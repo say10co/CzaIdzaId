@@ -14,7 +14,13 @@ Cat::~Cat()
 Cat::Cat(const Cat & cat)
 {
 	std::cout << "(Cat) copy constructor called";
+	*this = cat;
+}
+
+Cat &Cat::operator=(const Cat & cat)
+{
 	this->__type = cat.__type;
+	return (*this);
 }
 
 void	Cat::makeSound(void) const

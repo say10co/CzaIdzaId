@@ -1,5 +1,4 @@
 #include "../inc/Animal.hpp"
-#include  <iostream>
 
 Animal::Animal()
 	: __type("Animal")
@@ -15,7 +14,7 @@ Animal::~Animal()
 Animal::Animal(const Animal & animal)
 {
 	std::cout << "(Animal) Copy Constructor called!" << std::endl;
-	this->__type = animal.__type; 
+	*this = animal; 
 }
 
 Animal	&Animal::operator=(const Animal & animal)
