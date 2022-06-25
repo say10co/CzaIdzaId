@@ -2,6 +2,7 @@
 # define BUREAUCRAT_HPP 
 
 #include  <iostream>
+#include <fstream>
 
 class Bureaucrat
 {
@@ -46,5 +47,6 @@ class Bureaucrat
 
 };
 
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 
 #endif /* BUREAUCRAT_HPP */

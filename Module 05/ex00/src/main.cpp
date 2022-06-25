@@ -5,7 +5,7 @@
 int main()
 {
 	Bureaucrat b_crat;
-	Bureaucrat b_intern;
+	Bureaucrat b_intern("Intern", 130);
 
 	for (int i = 0; i < 50; i++)
 	{
@@ -25,7 +25,8 @@ int main()
 			std::cout << e.getException() << std::endl;
 		}
 	}
+	std::cout << b_intern << std::endl;
 	b_intern = b_crat;
-	std::cout << b_intern.getGrade() << std::endl;
+	//std::cout << "Interns Grad is " << b_intern.getGrade() << std::endl;
 	return (0);
 }

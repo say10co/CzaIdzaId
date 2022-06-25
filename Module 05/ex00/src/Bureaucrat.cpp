@@ -31,6 +31,12 @@ Bureaucrat & Bureaucrat::operator=(const Bureaucrat & bureaucrat)
 	return (*this);
 }
 
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
+{
+	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << "."; 
+	return (os);
+}
+
 std::string Bureaucrat::getName(void) const
 {
 	return  (this->__name);
