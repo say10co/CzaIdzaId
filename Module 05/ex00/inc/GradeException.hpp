@@ -6,36 +6,33 @@
 /*   By: adriouic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 08:35:06 by adriouic          #+#    #+#             */
-/*   Updated: 2022/06/26 08:35:48 by adriouic         ###   ########.fr       */
+/*   Updated: 2022/06/26 14:50:23 by adriouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRADEEXCEPTION_HPP
 # define GRADEEXCEPTION_HPP 
 
-class GradeException
+#include <stdexcept>
+#include "Bureaucrat.hpp"
+
+class GradeException : public std::exception
 {
 	public:
-		virtual const std::string &getException(void) const =  0;
+		virtual const char * what() const throw() =  0;
 };
 
 class Bureaucrat::GradeTooHighException : public GradeException
 {
-	private:
-		const std::string __exception;
 
 	public:
-		GradeTooHighException();
-		const std::string &getException(void) const;
+		const char * what() const throw();
 };
 
 class Bureaucrat::GradeTooLowException : public GradeException
 {
-	private:
-		const std::string __exception;
 	public:
-		GradeTooLowException();
-		const std::string &getException(void) const;
+		const char * what() const throw();
 };
 
 

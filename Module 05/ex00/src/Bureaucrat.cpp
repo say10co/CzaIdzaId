@@ -6,12 +6,12 @@
 /*   By: adriouic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 08:08:35 by adriouic          #+#    #+#             */
-/*   Updated: 2022/06/26 08:29:29 by adriouic         ###   ########.fr       */
+/*   Updated: 2022/06/26 14:50:57 by adriouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Bureaucrat.hpp"
 #include "../inc/GradeException.hpp"
+#include "../inc/Bureaucrat.hpp"
 #include  <iostream>
 
 Bureaucrat::Bureaucrat()
@@ -80,26 +80,29 @@ void	Bureaucrat::decGrade()
 
 }
 
+/*
 Bureaucrat::GradeTooHighException::GradeTooHighException()
 	:__exception("Exception: Grade exceeded highest possible grade")
 {
 }
+*/
 
-const std::string 	& Bureaucrat::GradeTooHighException::getException(void) const
+//const std::string 	& Bureaucrat::GradeTooHighException::getException(void) const
+const char *Bureaucrat::GradeTooHighException::what() const throw() 
 {
-	return (this->__exception);
+	return ("Exception: Grade exceeded highest possible grade");
 }
 
-
 	// Bureaucrat::GradeTooLowException
-
+/*
 Bureaucrat::GradeTooLowException::GradeTooLowException()
 	:__exception("Exception: Grade exceeded lowest possible grade")
 {
 }
+*/
 
-
-const std::string 	&Bureaucrat::GradeTooLowException::getException(void) const
+//const std::string 	&Bureaucrat::GradeTooLowException::getException(void) const
+const char *Bureaucrat::GradeTooLowException::what() const throw() 
 {
-	return (this->__exception);
+	return ("Exception: Grade exceeded lowest possible grade");
 }

@@ -20,5 +20,5 @@ int main() try
 }
 catch (const GradeException &e)
 {
-	std::cout << e.getException() << std::endl;
+	std::cout << e.what() << std::endl;
 }
