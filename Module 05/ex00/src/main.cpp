@@ -5,7 +5,7 @@
 
 int main() try
 {
-	Bureaucrat b_crat("B42", 10);
+	Bureaucrat b_crat("B42", -10);
 	Bureaucrat b_intern("Intern", 130);
 
 	b_crat.incGrade();
@@ -18,7 +18,7 @@ int main() try
 	std::cout << b_intern << std::endl;
 	return (0);
 }
-catch (const GradeException &e)
+catch (const std::exception &e)
 {
 	std::cout << e.what() << std::endl;
 }
