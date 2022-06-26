@@ -1,4 +1,5 @@
 #include "../inc/Form.hpp"
+#include "../inc/GradeException.hpp"
 
 Form::Form()
 	:__grade_to_execute(__lowest_grade), __grade_to_sign(__lowest_grade),
@@ -21,11 +22,6 @@ Form::Form(const Form & form)
 Form &Form::operator=(const Form & form)
 {
 	(void) form;
-	//this->__name = form.__name;
-	//this->__grade_to_execute  = form.__grade_to_execute;
-	//this->__grade_to_sign = form.__grade_to_sign;
-	//this->___is_signed = form.___is_signed;
-
 	return (*this);
 }
 
@@ -51,14 +47,13 @@ bool	 Form::isSigned(void) const
 
 std::ostream	&operator<<(std::ostream &os, const Form &form)
 {
-	os << "Name :--:> " <<  form.getName() << std::endl;
-	os << "Grade to sign :->: " << form.getGadeToSign() << std::endl;
-	os << "Grade to execute :->: " << form.getGradeToexecute() << std::endl;
-	os << "Is signed :->: " << form.isSigned() << std::endl;
+	os << "Name             :--:> " <<  form.getName() << std::endl;
+	os << "Grade to sign    :--:> " << form.getGadeToSign() << std::endl;
+	os << "Grade to execute :--:> " << form.getGradeToexecute() << std::endl;
+	os << "Is signed        :--:> " << form.isSigned() << std::endl;
 	return (os);
 }
 
-/* --------------------- Excepion Class --------------- */
 
 Form::Form(const std::string name , const int s_grade,const int e_grade, bool _is_signed)
 	:__grade_to_execute(__lowest_grade), __grade_to_sign(__lowest_grade),
@@ -68,27 +63,26 @@ Form::Form(const std::string name , const int s_grade,const int e_grade, bool _i
 		throw  Form::GradeTooLowException();
 	if ( e_grade < __hiest_grade)
 		throw Form::GradeTooHighException();
-
 }
 
-Form::GradeTooHighException::GradeTooHighException()
-	:__exception("Exception: Grade exceeded highest possible grade")
+const char *Form::GradeTooHighException::what() const throw() 
 {
+	return ("Exception: Grade exceeded highest possible grade");
 }
 
-const std::string 	& Form::GradeTooHighException::getException(void) const
+const char *Form::GradeTooLowException::what() const throw() 
 {
-	return (this->__exception);
+	return ("Exception: Grade exceeded lowest possible grade");
 }
 
-	// Form::GradeTooLowException
-
-Form::GradeTooLowException::GradeTooLowException()
-	:__exception("Exception: Grade exceeded lowest possible grade")
+void	Form::beSigned(const Bureaucrat & bureaucrat)
 {
+	if (this->__grade_to_sign >= bureaucrat.getGrade())
+		this->_is_signed = 1;
+	else
+		throw GradeTooLowException();
 }
-
-const std::string 	&Form::GradeTooLowException::getException(void) const
+void	Form::signForm(const Bureaucrat & bureaucrat)
 {
-	return (this->__exception);
+	std::cout << bureaucrat.getName() << " signed " << this->__name << std::endl;
 }

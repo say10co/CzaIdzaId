@@ -1,25 +1,29 @@
 #include <iostream>
 #include "../inc/Form.hpp"
+#include "../inc/GradeException.hpp"
+#include "../ex00/inc/Bureaucrat.hpp"
 
 
-int main()
+int main() try 
 {
-	
-	Form 	form;
 
-	try
-	{
-		Form f("ITFU", -1,  -1, 0);
-	}
-	catch(const Form::GradeTooHighException &e)
-	{
-		std::cout << e.getException() << std::endl;
-	}
-	catch(const Form::GradeTooLowException  &e)
-	{
-		std::cout << e.getException() << std::endl;
-	}
-	std::cout << form << std::endl;
+	Bureaucrat	remote_service("Joe", 43);
+	Form	license("Policy", 50, 100, 0);
+	Form 	terms("Agrement", 42, 42, 0);
+
+	std::cout << license << std::endl;
+	std::cout << terms << std::endl;
+
+	remote_service.signForm(terms);
+	terms.beSigned(remote_service);
+	remote_service.signForm(terms);
+	remote_service.incGrade();
+	terms.beSigned(remote_service);
+
 	return (0);
+}
+catch(const std::exception &e)
+{
+	std::cout << e.what() << std::endl;
 }
 

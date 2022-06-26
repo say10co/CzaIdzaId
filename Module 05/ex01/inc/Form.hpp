@@ -6,7 +6,7 @@
 /*   By: adriouic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:30:06 by adriouic          #+#    #+#             */
-/*   Updated: 2022/06/25 19:57:07 by adriouic         ###   ########.fr       */
+/*   Updated: 2022/06/26 18:43:49 by adriouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # define FORM_HPP 
 
 #include <iostream>
+#include "../ex00/inc/Bureaucrat.hpp"
+
 
 class Form
 {
@@ -34,35 +36,22 @@ class Form
 		Form(const Form &form);
 		Form(const std::string name , const int s_grade
 				,const int e_grade, bool is_signed);
-
 		Form &operator=(const Form & form);
+
+
 		const std::string	&getName(void) const;
 		int					getGadeToSign(void) const;
 		int					getGradeToexecute(void) const;
 		bool				isSigned(void) const;
 
+		void				beSigned(const Bureaucrat &bureaucrat);
+		void				signForm(const Bureaucrat &bureaucrat);
 
-		class GradeTooHighException
-		{
-			private:
-				const std::string __exception;
-
-			public:
-				GradeTooHighException();
-				const std::string &getException(void) const;
-			public:
-		};
-
-		class GradeTooLowException
-		{
-			private:
-				const std::string __exception;
-			public:
-				GradeTooLowException();
-				const std::string &getException(void) const;
-		};
-
+		class GradeTooHighException;
+		class GradeTooLowException;
+		
 };
 
 std::ostream &operator<<(std::ostream &os,  const Form &form);
+
 #endif /* FORM_HPP */

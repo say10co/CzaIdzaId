@@ -1,6 +1,6 @@
 NAME = ex01 
 
-SRC =  src/main.cpp src/Form.cpp
+SRC =  src/main.cpp src/Form.cpp  ex00/src/Bureaucrat.cpp
 
 OBJ = ${SRC:%.cpp=%.o}
 
