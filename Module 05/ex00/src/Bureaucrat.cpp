@@ -1,4 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adriouic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/26 08:08:35 by adriouic          #+#    #+#             */
+/*   Updated: 2022/06/26 08:29:29 by adriouic         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/Bureaucrat.hpp"
+#include "../inc/GradeException.hpp"
+#include  <iostream>
 
 Bureaucrat::Bureaucrat()
 	:__name("Bureaucrat"), __grade(__lowest_grade)
@@ -11,12 +25,16 @@ Bureaucrat::~Bureaucrat()
 }
 
 Bureaucrat::Bureaucrat(const std::string &name, const int  grade)
-	:__name(name)
+	//:__name(name)//, __grade(grade)
 {
-	if (__highest_grade > grade)
-		throw GradeTooHighException();
-	if (__lowest_grade < grade)
-		throw GradeTooLowException();
+		if (__highest_grade > grade)
+			throw GradeTooHighException();
+		if (__lowest_grade < grade)
+			throw GradeTooLowException();
+
+		this->__grade = grade;
+		this->__name = name ;
+
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat & bureaucrat)
@@ -52,7 +70,6 @@ void	Bureaucrat::incGrade(void)
 	if(__highest_grade > __grade - 1)
 		throw GradeTooHighException();
 	__grade -= 1;
-	// logic for increment 
 }
 
 void	Bureaucrat::decGrade()
@@ -62,9 +79,6 @@ void	Bureaucrat::decGrade()
 	__grade += 1;
 
 }
-
-// Nested classes
-	// Bureaucrat::GradeTooHighException
 
 Bureaucrat::GradeTooHighException::GradeTooHighException()
 	:__exception("Exception: Grade exceeded highest possible grade")

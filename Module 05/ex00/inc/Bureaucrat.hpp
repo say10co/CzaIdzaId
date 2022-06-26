@@ -1,7 +1,6 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP 
 
-#include  <iostream>
 #include <fstream>
 
 class Bureaucrat
@@ -25,25 +24,8 @@ class Bureaucrat
 		std::string	getName(void) const;
 		int			getGrade(void) const;
 
-		class GradeTooHighException
-		{
-			private:
-				const std::string __exception;
-
-			public:
-				GradeTooHighException();
-				const std::string &getException(void) const;
-			public:
-		};
-
-		class GradeTooLowException
-		{
-			private:
-				const std::string __exception;
-			public:
-				GradeTooLowException();
-				const std::string &getException(void) const;
-		};
+		class GradeTooHighException;
+		class GradeTooLowException;
 
 };
 
