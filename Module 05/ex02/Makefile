@@ -1,6 +1,8 @@
 NAME = ex02 
 
-SRC =   src/ShrubberyCreationForm.cpp src/main.cpp ex01/src/Form.cpp ex01/ex00/src/Bureaucrat.cpp
+SRC =   src/ShrubberyCreationForm.cpp src/main.cpp\
+       	ex01/src/Form.cpp ex01/ex00/src/Bureaucrat.cpp\
+	src/RobotomyRequestForm.cpp
 
 OBJ = ${SRC:%.cpp=%.o}
 
