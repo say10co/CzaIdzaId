@@ -1,5 +1,4 @@
 #include "../inc/Form.hpp"
-#include "../inc/GradeException.hpp"
 
 Form::Form()
 	:__grade_to_execute(__lowest_grade), __grade_to_sign(__lowest_grade),
@@ -14,14 +13,14 @@ Form::~Form()
 Form::Form(const Form & form)
 	:__grade_to_execute(form.__grade_to_execute),
 	__grade_to_sign(form.__grade_to_sign),
-	__name(form.__name), _is_signed(form._is_signed)
+	__name(form.__name)
 {
 	*this = form;
 }
 
 Form &Form::operator=(const Form & form)
 {
-	(void) form;
+	this->_is_signed = form._is_signed;
 	return (*this);
 }
 
@@ -66,12 +65,17 @@ Form::Form(const std::string &name ,int s_grade, int e_grade, bool _is_signed)
 
 const char *Form::GradeTooHighException::what() const throw() 
 {
-	return ("Grade exceeded highest possible grade");
+	return ("Grade exceeded highest possible grade!");
 }
 
 const char *Form::GradeTooLowException::what() const throw() 
 {
-	return ("Grade exceeded lowest possible grade");
+	return ("Grade exceeded lowest possible grade!");
+}
+
+const char *Form::UnsignedForm::what() const throw() 
+{
+	return ("Usigned form can't be executed!");
 }
 
 void	Form::beSigned(const Bureaucrat & bureaucrat) 

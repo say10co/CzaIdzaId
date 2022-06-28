@@ -17,14 +17,13 @@
 #include <iostream>
 #include "../ex00/inc/Bureaucrat.hpp"
 
-
 class Form
 {
 	private:
-		
+
 		const int			__grade_to_execute;
 		const int			__grade_to_sign;
-		const std::string	__name;
+		const std::string		__name;
 		bool			 	_is_signed; 
 
 		static const int			__hiest_grade = 1;
@@ -37,18 +36,35 @@ class Form
 		Form(const std::string &name ,int s_grade ,int e_grade, bool is_signed);
 		Form &operator=(const Form & form);
 
+	 
+		virtual void execute(Bureaucrat const & executor) = 0;
 
-		const std::string	&getName(void) const;
-		int					getGadeToSign(void) const;
-		int					getGradeToexecute(void) const;
+		const std::string &		getName() const;
+		int				getGradeToexecute(void) const;
+		int    				getGadeToSign() const;
 		bool				isSigned(void) const;
 
 		void				beSigned(const Bureaucrat &bureaucrat);
 		void				signForm(const Bureaucrat &bureaucrat);
-
-		class GradeTooHighException;
-		class GradeTooLowException;
 		
+		class GradeTooHighException : public std::exception 
+		{
+			public:
+			const char * what() const throw();
+		};
+
+		class GradeTooLowException : public std::exception
+		{
+			public:
+			const char * what() const throw();
+		};
+		class UnsignedForm : public std::exception 
+		{
+			public:
+			const char * what() const throw();
+		};
+
+
 };
 
 std::ostream &operator<<(std::ostream &os,  const Form &form);

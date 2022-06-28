@@ -1,12 +1,13 @@
+
 #include "../inc/ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-	__fileName("Default")
+	:Form("ShrubberyForm", __s_grade, __e_grade, 0), __fileName("Default_shrubbery")
 {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
-	:__fileName(target + "_shrubbery")
+	:Form(target, __s_grade, __e_grade, 0), __fileName(target + "_shrubbery")
 {
 }
 
@@ -15,30 +16,42 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &org)
+	:Form(org)
 {
-
+	*this = org;
 }
 
-ShrubberyCreationForm &operator=(const ShrubberyCreationForm& org)
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm& org)
 {
+	(*this).Form::operator=(org);
+	this->__fileName = org.__fileName;
 	return (*this);
 }
 
-ShrubberyCreationFor::execute(Bureaucrat const & executor)
+void ShrubberyCreationForm::execute(Bureaucrat const & executor)
 {
 	try
 	{
-		this->__out_file = open(this->__fileName , std::ofstream::out);
-		writeTreeiTofile();
+		if (!this->isSigned())
+			throw Form::UnsignedForm();
+		if (executor.getGrade() <= __e_grade)
+		{
+			__out_file.open(this->__fileName , std::ofstream::out);
+			writeTreeiTofile();
+			__out_file.close();
+			std::cout << executor.getName() << " executed " << this->getName() << std::endl;
+		}
+		else
+			throw GradeTooLowException();
 	}
-	catch(const std::execeptions &e)
+	catch(const std::exception &e)
 	{
 		std::cout <<  e.what() << std::endl;
 	}
 
 }
 
-void ShrubberyCreationFor::writeTreeiTofile(void)
+void ShrubberyCreationForm::writeTreeiTofile(void)
 {
 
 	std::ofstream &of = this->__out_file;

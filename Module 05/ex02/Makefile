@@ -1,6 +1,6 @@
-NAME = ex01 
+NAME = ex02 
 
-SRC =  src/main.cpp src/Form.cpp  ex00/src/Bureaucrat.cpp
+SRC =   src/ShrubberyCreationForm.cpp src/main.cpp ex01/src/Form.cpp ex01/ex00/src/Bureaucrat.cpp
 
 OBJ = ${SRC:%.cpp=%.o}
 
@@ -21,6 +21,7 @@ $(NAME): $(OBJ)
 
 clean:
 	rm -rf $(OBJ)
+	rm -rf *_shrubbery
 
 fclean: clean
 	rm -rf $(NAME)
