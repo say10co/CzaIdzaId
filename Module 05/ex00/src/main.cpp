@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../inc/Colors.h"
+#include "../Colors.h"
 #include "../inc/Bureaucrat.hpp"
 
 int main() try

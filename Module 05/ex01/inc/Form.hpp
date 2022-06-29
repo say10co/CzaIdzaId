@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include "../ex00/inc/Bureaucrat.hpp"
+#include "../ex00/Colors.h"
 
 class Form
 {

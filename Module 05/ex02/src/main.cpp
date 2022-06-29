@@ -4,41 +4,58 @@
 
 #include <iostream>
 
+	
+
+
+
+void ShrubberyCreationForm_test()
+{
+	ShrubberyCreationForm sampleForm;
+	Bureaucrat	   	expert("Expert", 14);
+	Bureaucrat	   	intermediat("Intermediat", 150);
+	
+	
+	expert.executeForm(sampleForm);
+	intermediat.signForm(sampleForm);
+	expert.signForm(sampleForm);
+	intermediat.executeForm(sampleForm);
+	expert.executeForm(sampleForm);
+
+}
+
+
+void RobotomyRequestForm_test()
+{
+	RobotomyRequestForm rr_from("robot");
+	Bureaucrat	  	manager("Manager", 44);
+
+	manager.executeForm(rr_from);
+	manager.signForm(rr_from);
+	manager.executeForm(rr_from);
+}
+
+void PresidentialPardonForm_test()
+{
+	PresidentialPardonForm speech("Presidential speech");
+	Bureaucrat councler("Councler", 6);
+
+	councler.signForm(speech);
+	councler.executeForm(speech);
+	councler.incGrade();
+	councler.executeForm(speech);
+
+}
+
 int main()
 {
-	
-	try
-	{
-		ShrubberyCreationForm license("dirver license");
-		Bureaucrat	vice("vice", 26);
-		Bureaucrat	Minion("Minion", 136);
-	
-		
-		Minion.executeForm(license);
-		vice.signForm(license);
-		Minion.executeForm(license);
+	ShrubberyCreationForm_test();	
 
+	std::cout << "--------------------" << std::endl;
 
-		RobotomyRequestForm robotomy_form;
+	RobotomyRequestForm_test();
 
+	std::cout << "--------------------" << std::endl;
 
-		Minion.executeForm(robotomy_form);
-		vice.signForm(robotomy_form);
-		Minion.executeForm(robotomy_form);
-		vice.executeForm(robotomy_form);
+	PresidentialPardonForm_test();
 
-		PresidentialPardonForm PresidentialFrom;
-
-
-		vice.executeForm(PresidentialFrom);
-		vice.signForm(PresidentialFrom);
-		Minion.executeForm(PresidentialFrom);
-		vice.executeForm(PresidentialFrom);
-
-		return (0);
-	}
-	catch(const std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
 }

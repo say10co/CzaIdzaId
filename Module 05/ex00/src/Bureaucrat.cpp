@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/Bureaucrat.hpp"
-#include "../inc/Colors.h"
+#include "../Colors.h"
 #include  <iostream>
 
 Bureaucrat::Bureaucrat()

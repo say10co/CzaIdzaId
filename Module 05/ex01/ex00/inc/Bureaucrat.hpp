@@ -2,14 +2,14 @@
 # define BUREAUCRAT_HPP 
 
 #include <fstream>
-//#include "../../inc/Form.hpp"
+
 class Form;
 
 class Bureaucrat
 {
 	private:
-		std::string	__name;
-		int					__grade;
+		const std::string	__name;
+		int			__grade;
 
 		static const int __lowest_grade = 150;
 		static const int __highest_grade = 1;
@@ -25,11 +25,19 @@ class Bureaucrat
 		void				decGrade(void);
 		std::string	getName(void) const;
 		int			getGrade(void) const;
+		void    signForm(Form & form);
 
-		void	signForm(Form & form);
-		class GradeTooHighException;
-		class GradeTooLowException;
+		class GradeTooHighException : public std::exception
+		{
+			public:
+			const char * what() const throw();
+		};
 
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				const char * what() const throw();
+		};
 };
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);

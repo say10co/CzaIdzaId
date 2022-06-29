@@ -10,28 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-
 #include "../inc/PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm()
-	:Form("PresidentialPardonForm", __s_grade, __e_grade, 0)
+	:Form("PresidentialPardonForm", __s_grade, __e_grade, 0), __target("target")
 {
+	std::cout << GREEN << BOLD << "(PresidentialPardonForm)" << NORMAL
+        <<  " Default constructor called."  << DEFAULT <<  std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
 	:Form("PresidentialPardonForm", __s_grade, __e_grade, 0), __target(target)
 {
+	 std::cout << GREEN << BOLD << "(PresidentialPardonForm)" << NORMAL
+          <<  " Parameterised constructor called."  << DEFAULT <<  std::endl;
 }
+
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
+	std::cout << RED << BOLD << "(PresidentialPardonForm)" << NORMAL
+        <<  " Distructor called."  << DEFAULT <<  std::endl;
+
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &org)
 	:Form(org)
 {
+ 	std::cout << GREEN << BOLD << "(PresidentialPardonForm)" << NORMAL 
+		<<  " Copy constructor called."  << DEFAULT <<  std::endl;
 	*this = org;
 }
 
@@ -39,22 +46,21 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 {
 	(*this).Form::operator=(org);
 	this->__target = org.__target;
+
+	std::cout << GREEN << BOLD << "(PresidentialPardonForm)" << NORMAL
+        <<  " Copy constructor called."  << DEFAULT <<  std::endl;
 	return (*this);
 }
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-	if (!this->isSigned())
-		throw Form::UnsignedForm();
-	if (executor.getGrade() <= __e_grade)
-	{
-		std::cout <<  this->__target 
-		<<   "has been pardoned by Zaphod Beeblebrox" << std::endl;
-	}
-	else
-		throw GradeTooLowException();
-}
 
+	if (this->isQualefied(executor))
+	{
+		std::cout << BOLD <<  this->__target 
+		<<   " has been pardoned by Zaphod Beeblebrox" << NORMAL << std::endl;
+	}
+}
 const std::string &PresidentialPardonForm::getTarget(void) const
 {
 	return (this->__target);
