@@ -6,7 +6,7 @@
 /*   By: adriouic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 08:35:06 by adriouic          #+#    #+#             */
-/*   Updated: 2022/06/26 18:07:45 by adriouic         ###   ########.fr       */
+/*   Updated: 2022/06/26 14:50:23 by adriouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GRADEEXCEPTION_HPP 
 
 #include <stdexcept>
-#include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 class GradeException : public std::exception
 {
@@ -22,13 +22,14 @@ class GradeException : public std::exception
 		virtual const char * what() const throw() =  0;
 };
 
-class Form::GradeTooHighException : public GradeException
+class Bureaucrat::GradeTooHighException : public GradeException
 {
+
 	public:
 		const char * what() const throw();
 };
 
-class Form::GradeTooLowException : public GradeException
+class Bureaucrat::GradeTooLowException : public GradeException
 {
 	public:
 		const char * what() const throw();

@@ -60,6 +60,11 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		throw GradeTooLowException();
 }
 
+const std::string &ShrubberyCreationForm::getTarget(void) const
+{
+	return (this->__target);
+}
+
 void writeTreeiTofile(std::ofstream &out_file)
 {
 

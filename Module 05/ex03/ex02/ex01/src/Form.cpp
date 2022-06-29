@@ -65,12 +65,17 @@ Form::Form(const std::string &name ,int s_grade, int e_grade, bool _is_signed)
 
 const char *Form::GradeTooHighException::what() const throw() 
 {
-	return ("Grade exceeded highest possible grade");
+	return ("Grade exceeded highest possible grade!");
 }
 
 const char *Form::GradeTooLowException::what() const throw() 
 {
-	return ("Grade exceeded lowest possible grade");
+	return ("Grade exceeded lowest possible grade!");
+}
+
+const char *Form::UnsignedForm::what() const throw() 
+{
+	return ("Usnigned form can't be executed!");
 }
 
 void	Form::beSigned(const Bureaucrat & bureaucrat) 

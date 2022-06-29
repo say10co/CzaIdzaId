@@ -1,6 +1,5 @@
 #include <iostream>
 #include "../inc/Form.hpp"
-#include "../inc/GradeException.hpp"
 #include "../ex00/inc/Bureaucrat.hpp"
 
 

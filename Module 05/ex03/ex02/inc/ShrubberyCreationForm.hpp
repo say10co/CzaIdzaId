@@ -23,6 +23,8 @@ class ShrubberyCreationForm :public  Form
 
 
 		void execute(Bureaucrat const & executor) const;
+		const std::string &getTarget(void) const;
+
 };
 
 #endif /* SHRUBBERYCREATIONFORM_HPP */
