@@ -28,26 +28,19 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 	return (*this);
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const & executor)
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const 
 {
-	try
+	if (!this->isSigned())
+		throw Form::UnsignedForm();
+	if (executor.getGrade() <= __e_grade)
 	{
-		if (!this->isSigned())
-			throw Form::UnsignedForm();
-		if (executor.getGrade() <= __e_grade)
-		{
-			std::cout << "Making drilling noises !?!?!?!?!?!" << std::endl;
-			std::cout <<  this->getName()
+		std::cout << "Making drilling noises !?!?!?!?!?!" << std::endl;
+		std::cout <<  this->getName()
 			<<   "has been robotomized successfully 50% of the time"
 			<< std::endl;
-		}
-		else
-			throw GradeTooLowException();
 	}
-	catch(const std::exception &e)
-	{
-		std::cout <<  "robotomy failed because " <<  e.what() << std::endl;
-	}
+	else
+		throw GradeTooLowException();
 
 }
 

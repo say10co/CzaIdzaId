@@ -21,7 +21,7 @@ class RobotomyRequestForm :public  Form
 		RobotomyRequestForm(const std::string &target);
 
 
-		void execute(Bureaucrat const & executor);
+		void execute(Bureaucrat const & executor) const;
 };
 
 #endif /* ROBOTOMYREQUESTFORM_HPP */

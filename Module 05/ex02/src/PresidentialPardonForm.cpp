@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adriouic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/29 12:23:01 by adriouic          #+#    #+#             */
+/*   Updated: 2022/06/29 12:26:43 by adriouic         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 
 
@@ -29,25 +41,17 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 	return (*this);
 }
 
-void PresidentialPardonForm::execute(Bureaucrat const & executor)
+void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-	try
+	if (!this->isSigned())
+		throw Form::UnsignedForm();
+	if (executor.getGrade() <= __e_grade)
 	{
-		if (!this->isSigned())
-			throw Form::UnsignedForm();
-		if (executor.getGrade() <= __e_grade)
-		{
-			std::cout <<  this->getName()
+		std::cout <<  this->getName()
 			<<   "has been pardoned by Zaphod Beeblebrox"
 			<< std::endl;
-		}
-		else
-			throw GradeTooLowException();
 	}
-	catch(const std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-
+	else
+		throw GradeTooLowException();
 }
 

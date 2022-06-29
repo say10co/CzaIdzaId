@@ -9,31 +9,31 @@ int main()
 	
 	try
 	{
-		ShrubberyCreationForm License("dirver license");
+		ShrubberyCreationForm license("dirver license");
 		Bureaucrat	vice("vice", 26);
 		Bureaucrat	Minion("Minion", 136);
 	
 		
-		License.execute(Minion);
-		vice.signForm(License);
-		License.execute(Minion);
+		Minion.executeForm(license);
+		vice.signForm(license);
+		Minion.executeForm(license);
 
 
 		RobotomyRequestForm robotomy_form;
 
 
-		robotomy_form.execute(Minion);
+		Minion.executeForm(robotomy_form);
 		vice.signForm(robotomy_form);
-		robotomy_form.execute(Minion);
-		robotomy_form.execute(vice);
+		Minion.executeForm(robotomy_form);
+		vice.executeForm(robotomy_form);
 
 		PresidentialPardonForm PresidentialFrom;
 
 
-		PresidentialFrom.execute(vice);
+		vice.executeForm(PresidentialFrom);
 		vice.signForm(PresidentialFrom);
-		PresidentialFrom.execute(Minion);
-		PresidentialFrom.execute(vice);
+		Minion.executeForm(PresidentialFrom);
+		vice.executeForm(PresidentialFrom);
 
 		return (0);
 	}

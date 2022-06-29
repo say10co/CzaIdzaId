@@ -6,7 +6,7 @@
 /*   By: adriouic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:30:06 by adriouic          #+#    #+#             */
-/*   Updated: 2022/06/28 12:10:56 by adriouic         ###   ########.fr       */
+/*   Updated: 2022/06/29 12:28:24 by adriouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class Form
 		Form &operator=(const Form & form);
 
 	 
-		virtual void execute(Bureaucrat const & executor) = 0;
+		virtual void execute(Bureaucrat const & executor) const = 0;
 
 		const std::string &		getName() const;
 		int				getGradeToexecute(void) const;

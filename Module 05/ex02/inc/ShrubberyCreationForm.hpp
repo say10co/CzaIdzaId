@@ -12,7 +12,6 @@ class ShrubberyCreationForm :public  Form
 		static const int	__e_grade = 137;
 		static const int 	__s_grade = 145;
 
-		void	writeTreeiTofile(void);
 
 	public:
 		ShrubberyCreationForm();
@@ -22,8 +21,7 @@ class ShrubberyCreationForm :public  Form
 		ShrubberyCreationForm(const std::string &target);
 
 
-		void execute(Bureaucrat const & executor);
-		// absstract functuin declaration 	
+		void execute(Bureaucrat const & executor) const;
 };
 
 #endif /* SHRUBBERYCREATIONFORM_HPP */

@@ -1,5 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adriouic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/29 12:30:31 by adriouic          #+#    #+#             */
+/*   Updated: 2022/06/29 12:48:17 by adriouic         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "../inc/ShrubberyCreationForm.hpp"
+
+
+void writeTreeiTofile(std::ofstream &out_file);
 
 ShrubberyCreationForm::ShrubberyCreationForm()
 	:Form("ShrubberyForm", __s_grade, __e_grade, 0), __fileName("Default_shrubbery")
@@ -28,62 +43,54 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor)
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	try
-	{
-		if (!this->isSigned())
-			throw Form::UnsignedForm();
-		if (executor.getGrade() <= __e_grade)
-		{
-			__out_file.open(this->__fileName , std::ofstream::out);
-			writeTreeiTofile();
-			__out_file.close();
-			std::cout << executor.getName() << " executed " << this->getName() << std::endl;
-		}
-		else
-			throw GradeTooLowException();
-	}
-	catch(const std::exception &e)
-	{
-		std::cout <<  e.what() << std::endl;
-	}
+	std::ofstream	out_file;
 
+	if (!this->isSigned())
+		throw Form::UnsignedForm();
+	if (executor.getGrade() <= __e_grade)
+	{
+		out_file.open(this->__fileName , std::ofstream::out);
+		writeTreeiTofile(out_file);
+		out_file.close();
+	}
+	else
+		throw GradeTooLowException();
 }
 
-void ShrubberyCreationForm::writeTreeiTofile(void)
+void writeTreeiTofile(std::ofstream &out_file)
 {
 
-	std::ofstream &of = this->__out_file;
-	of	<<	 "                                                        ."	
-			<<	"                                              .         ; 			\n" 	
-			<<	"                 .              .              ;%     ;;   		\n"	
-			<<	"                   ,           ,                :;%  %;   			\n"	
-			<<	"                    :         ;                   :;%;'     .,   	\n"	
-			<<	"           ,.        %;     %;            ;        %;'    ,;		\n"	
-			<<	"             ;       ;%;  %%;        ,     %;    ;%;    ,%'		\n"	
-			<<	"              %;       %;%;      ,  ;       %;  ;%;   ,%;' 		\n"	
-			<<	"               ;%;      %;        ;%;        % ;%;  ,%;'			\n"	
-			<<	"                `%;.     ;%;     %;'         `;%%;.%;'				\n"	
-			<<	"                 `:;%.    ;%%. %@;        %; ;@%;%'				\n"	
-			<<	"                    `:%;.  :;bd%;          %;@%;'					\n"				
-			<<	"                      `@%:.  :;%.         ;@@%;'   				\n"	
-			<<	"                        `@%.  `;@%.      ;@@%;         			\n"		
-			<<	"                          `@%%. `@%%    ;@@%;        				\n"	
-			<<	"                            ;@%. :@%%  %@@%;      					\n"			 
-			<<	"                              %@bd%%%bd%%:;     					\n"							
-			<<	"                                #@%%%%%:;;							\n"	
-			<<	"                                %@@%%%::;							\n"		
-			<<	"                                %@@@%(o);  . '       			 	\n"					 
-			<<	"                                %@@@o%;:(.,'         				\n"	
-			<<	"                            `.. %@@@o%::;         					\n"	
-			<<	"                               `)@@@o%::;         					\n"	
-			<<	"                                %@@(o)::;        					\n"	
-			<<	"                               .%@@@@%::;         					\n"	
-			<<	"                               ;%@@@@%::;.          				\n"	
-			<<	"                              ;%@@@@%%:;;;. 						\n"		
-			<<	"                          ...;%@@@@@%%:;;;;,.. 		 			\n"		
-			<< std::endl;
+	out_file <<	 "                                                        ."	
+		<<	"                                              .         ; 			\n" 	
+		<<	"                 .              .              ;%     ;;   		\n"	
+		<<	"                   ,           ,                :;%  %;   			\n"	
+		<<	"                    :         ;                   :;%;'     .,   	\n"	
+		<<	"           ,.        %;     %;            ;        %;'    ,;		\n"	
+		<<	"             ;       ;%;  %%;        ,     %;    ;%;    ,%'		\n"	
+		<<	"              %;       %;%;      ,  ;       %;  ;%;   ,%;' 		\n"	
+		<<	"               ;%;      %;        ;%;        % ;%;  ,%;'			\n"	
+		<<	"                `%;.     ;%;     %;'         `;%%;.%;'				\n"	
+		<<	"                 `:;%.    ;%%. %@;        %; ;@%;%'				\n"	
+		<<	"                    `:%;.  :;bd%;          %;@%;'					\n"				
+		<<	"                      `@%:.  :;%.         ;@@%;'   				\n"	
+		<<	"                        `@%.  `;@%.      ;@@%;         			\n"		
+		<<	"                          `@%%. `@%%    ;@@%;        				\n"	
+		<<	"                            ;@%. :@%%  %@@%;      					\n"			 
+		<<	"                              %@bd%%%bd%%:;     					\n"							
+		<<	"                                #@%%%%%:;;							\n"	
+		<<	"                                %@@%%%::;							\n"		
+		<<	"                                %@@@%(o);  . '       			 	\n"					 
+		<<	"                                %@@@o%;:(.,'         				\n"	
+		<<	"                            `.. %@@@o%::;         					\n"	
+		<<	"                               `)@@@o%::;         					\n"	
+		<<	"                                %@@(o)::;        					\n"	
+		<<	"                               .%@@@@%::;         					\n"	
+		<<	"                               ;%@@@@%::;.          				\n"	
+		<<	"                              ;%@@@@%%:;;;. 						\n"		
+		<<	"                          ...;%@@@@@%%:;;;;,.. 		 			\n"		
+		<< std::endl;
 
-	
+
 }

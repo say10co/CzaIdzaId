@@ -5,6 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adriouic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/29 12:25:00 by adriouic          #+#    #+#             */
+/*   Updated: 2022/06/29 12:46:31 by adriouic         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adriouic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 08:08:35 by adriouic          #+#    #+#             */
 /*   Updated: 2022/06/28 12:13:47 by adriouic         ###   ########.fr       */
 /*                                                                            */
@@ -103,3 +115,18 @@ void	Bureaucrat::signForm(Form &form)
 			<< form.getName() << " because " << e.what() << std::endl;
 	}
 }
+
+void	Bureaucrat::executeForm(Form const & form)
+{
+	try
+	{
+		form.execute(*this);
+	}
+	catch(const std::exception &e)
+	{
+		std::cout << "Execution of " << form.getName()
+			<< " Failed because " << e.what() << std::endl;
+	}
+
+}
+
