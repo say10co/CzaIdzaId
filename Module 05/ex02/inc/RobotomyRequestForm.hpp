@@ -6,8 +6,7 @@
 class RobotomyRequestForm :public  Form
 {
 	private:
-		std::string 	 __fileName;
-		std::ofstream	__out_file;
+		std::string 		__target;
 		static const int	__e_grade = 45;
 		static const int 	__s_grade = 72;
 

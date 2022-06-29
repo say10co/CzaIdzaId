@@ -6,7 +6,7 @@
 /*   By: adriouic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 12:30:31 by adriouic          #+#    #+#             */
-/*   Updated: 2022/06/29 12:48:17 by adriouic         ###   ########.fr       */
+/*   Updated: 2022/06/29 13:07:51 by adriouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 void writeTreeiTofile(std::ofstream &out_file);
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-	:Form("ShrubberyForm", __s_grade, __e_grade, 0), __fileName("Default_shrubbery")
+	:Form("ShrubberyCreationForm", __s_grade, __e_grade, 0), __fileName("Default_shrubbery")
 {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
-	:Form(target, __s_grade, __e_grade, 0), __fileName(target + "_shrubbery")
+	:Form("ShrubberyCreationForm", __s_grade, __e_grade, 0), __fileName(target + "_shrubbery")
 {
 }
 

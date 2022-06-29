@@ -6,7 +6,7 @@
 /*   By: adriouic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 12:23:01 by adriouic          #+#    #+#             */
-/*   Updated: 2022/06/29 12:26:43 by adriouic         ###   ########.fr       */
+/*   Updated: 2022/06/29 13:20:04 by adriouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ PresidentialPardonForm::PresidentialPardonForm()
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
-	:Form(target, __s_grade, __e_grade, 0)
+	:Form("PresidentialPardonForm", __s_grade, __e_grade, 0), __target(target)
 {
 }
 
@@ -38,6 +38,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &org
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm& org)
 {
 	(*this).Form::operator=(org);
+	this->__target = org.__target;
 	return (*this);
 }
 
@@ -47,9 +48,8 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 		throw Form::UnsignedForm();
 	if (executor.getGrade() <= __e_grade)
 	{
-		std::cout <<  this->getName()
-			<<   "has been pardoned by Zaphod Beeblebrox"
-			<< std::endl;
+		std::cout <<  this->__target 
+		<<   "has been pardoned by Zaphod Beeblebrox" << std::endl;
 	}
 	else
 		throw GradeTooLowException();

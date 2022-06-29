@@ -75,7 +75,7 @@ const char *Form::GradeTooLowException::what() const throw()
 
 const char *Form::UnsignedForm::what() const throw() 
 {
-	return ("Usigned form can't be executed!");
+	return ("Usnigned form can't be executed!");
 }
 
 void	Form::beSigned(const Bureaucrat & bureaucrat) 

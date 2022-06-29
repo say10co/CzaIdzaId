@@ -7,6 +7,7 @@ class PresidentialPardonForm :public  Form
 {
 	private:
 		std::string 	 __fileName;
+		std::string 	__target;
 		static const int	__e_grade = 5;
 		static const int 	__s_grade = 25;
 
@@ -18,7 +19,6 @@ class PresidentialPardonForm :public  Form
 		PresidentialPardonForm(const PresidentialPardonForm &org);
 		PresidentialPardonForm &operator=(const  PresidentialPardonForm & org);
 		PresidentialPardonForm(const std::string &target);
-
 
 		void execute(Bureaucrat const & executor) const;
 };
