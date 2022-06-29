@@ -8,8 +8,8 @@ class RobotomyRequestForm :public  Form
 	private:
 		std::string 	 __fileName;
 		std::ofstream	__out_file;
-		static const int	__e_grade = 72;
-		static const int 	__s_grade = 45;
+		static const int	__e_grade = 45;
+		static const int 	__s_grade = 72;
 
 		void	writeTreeiTofile(void);
 
