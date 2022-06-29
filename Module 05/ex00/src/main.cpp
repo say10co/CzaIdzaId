@@ -1,24 +1,36 @@
 #include <iostream>
+#include "../inc/Colors.h"
 #include "../inc/Bureaucrat.hpp"
-#include "../inc/GradeException.hpp"
-
 
 int main() try
 {
-	Bureaucrat b_crat("B42", -10);
-	Bureaucrat b_intern("Intern", 130);
+	Bureaucrat leader("CEO", 1);
+	Bureaucrat manager("Manager", 4);
+	Bureaucrat councler("Councler", 50);
+	Bureaucrat new_councler;
+	Bureaucrat intern;
 
-	b_crat.incGrade();
-	std::cout << "Bureaucrat "  << b_crat.getName() << " Pormoted to "<< b_crat.getGrade() << std::endl;
-	b_crat.decGrade();
-	std::cout << "Bureaucrat " << b_crat.getName() << " Heldback to "<< b_crat.getGrade() << std::endl;
+	new_councler = councler;
 
-	std::cout << b_intern << std::endl;
-	b_intern = b_crat;
-	std::cout << b_intern << std::endl;
+	std::cout << leader << std::endl;
+	std::cout << manager << std::endl;
+	std::cout << councler << std::endl;
+	std::cout << new_councler << std::endl;
+	std::cout << intern << std::endl;
+
+	manager.incGrade();
+	councler.decGrade();
+	leader.incGrade();
+	intern.decGrade();
+	
+	std::cout << leader << std::endl;
+	std::cout << manager << std::endl;
+	std::cout << councler << std::endl;
+	std::cout << intern << std::endl;
+
 	return (0);
 }
 catch (const std::exception &e)
 {
-	std::cout << e.what() << std::endl;
+	std::cout << CYAN << e.what() << "!!" << DEFAULT << std::endl;
 }
