@@ -6,7 +6,7 @@
 /*   By: adriouic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:30:06 by adriouic          #+#    #+#             */
-/*   Updated: 2022/06/28 12:10:56 by adriouic         ###   ########.fr       */
+/*   Updated: 2022/06/30 00:35:54 by adriouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Form
 
 	public:
 		Form();
-		~Form();
+		virtual ~Form();
 		Form(const Form &form);
 		Form(const std::string &name ,int s_grade ,int e_grade, bool is_signed);
 		Form &operator=(const Form & form);

@@ -1,10 +1,12 @@
 NAME = ex03 
 
-SRC = src/Intern.cpp src/main.cpp ex02/src/PresidentialPardonForm.cpp ex02/src/RobotomyRequestForm.cpp ex02/src/ShrubberyCreationForm.cpp ex02/ex01/src/Form.cpp ex02/ex01/ex00/src/Bureaucrat.cpp
+SRC = src/Intern.cpp src/main.cpp ex02/src/PresidentialPardonForm.cpp\
+	  ex02/src/RobotomyRequestForm.cpp ex02/src/ShrubberyCreationForm.cpp\
+	  ex02/ex01/src/Form.cpp ex02/ex01/ex00/src/Bureaucrat.cpp
 
 OBJ = ${SRC:%.cpp=%.o}
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -fsanitize=address 
 
 COMPILER = c++
 
