@@ -1,51 +1,68 @@
 #include "../inc/Intern.hpp"
 
+Intern::Intern()
+{
+	std::cout << GREEN << BOLD << "(Intern)" << NORMAL
+        <<  " Default constructor called."  << DEFAULT <<  std::endl;
+}
 
-Intern::Intern(){}
+Intern::~Intern()
+{
+	std::cout << RED << BOLD << "(Intern)" << NORMAL
+        <<  " Distructor called."  << DEFAULT <<  std::endl;
+}
 
-Intern::~Intern(){}
-
-Intern::Intern(const Intern & intern){
+Intern::Intern(const Intern & intern)
+{
 	(void) intern;
+	std::cout << GREEN << BOLD << "(Intern)" << NORMAL 
+		<<  " Copy constructor called."  << DEFAULT <<  std::endl;
 }
 
 
-Intern & Intern::operator=(const Intern & intern){
+Intern & Intern::operator=(const Intern & intern)
+{
 	(void) intern;
+	std::cout << GREEN << BOLD << "(Intern)" << NORMAL
+        <<  " Copy constructor called."  << DEFAULT <<  std::endl;
+
 	return (*this);
 }
 
-
-Form *Intern::makeForm(const std::string &form_name, const std::string &target)
+const char *Intern::UnkownForm::what() const throw()
 {
-	int index = -42;
+	return ("Unable to finde a matching form!");
+}
+
+int	getIndex(const std::string &form)
+{
 
 	std::string forms[4] = {"srubbery creation", "robotomy request", "presidential pardon"};
 
 	for (int i = 0; i < 4; i++)
 	{
-		if (forms[i] == form_name)
-		{
-			index = i;
-			break;
-		}
+		if (forms[i] == form)
+			return (i);
 	}
+	return (-42);
+
+}
+Form *Intern::makeForm(const std::string &form_name, const std::string &target)
+{
+	int index;
+
+	index = getIndex(form_name);
 	switch(index)	
 	{
 		case(0):
 			return (new ShrubberyCreationForm(target));
-			break;
-
 		case(1):
 			return(new RobotomyRequestForm(target));
-			break;
-
 		case(2):
 			return (new PresidentialPardonForm(target));
-			break;
-
 		default:
-			std::cout << "Form of name " << form_name << " Does not exist!" << std::endl;
+			std::cout << BOLD << "Form of name \"" << form_name << "\" Does not exist!" << NORMAL <<  std::endl;
+			throw(UnkownForm());
 			return (NULL);
 
 	}

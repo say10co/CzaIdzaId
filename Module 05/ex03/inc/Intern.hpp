@@ -10,12 +10,17 @@
 class Intern
 {
 	public:
-	
+
 		Intern();
 		~Intern();
 		Intern(const Intern & intern);
 		Intern &operator=(const Intern & intern);
 		Form *makeForm(const std::string &form_name, const std::string &target);
+
+		class UnkownForm: public std::exception
+		{
+			const char *what() const throw();
+		};
 };
 
 #endif /* INTERN_HPP */
