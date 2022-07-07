@@ -34,11 +34,15 @@ ScalarTypes::~ScalarTypes()
 }
 
 ScalarTypes::ScalarTypes(const char *str)
+	:int_val(-1), char_val(-1), float_val(-1), double_val(-1)
 {
 	double_val = std::stod(str);
-	int_val = static_cast<int>(double_val);
-	char_val = static_cast<char>(double_val);
-	float_val = static_cast<float>(double_val);
+	if (double_val <= std::numeric_limits<char>::max())
+		char_val = static_cast<char>(double_val);
+	if (double_val <= std::numeric_limits<int>::max())
+		int_val = static_cast<int>(double_val);
+	if (double_val <= std::numeric_limits<float>::max())
+		float_val = static_cast<float>(double_val);
 
 }
 
@@ -58,24 +62,42 @@ ScalarTypes& ScalarTypes::operator=(const ScalarTypes & scalartype)
 
 std::ostream &operator<<(std::ostream &os, const ScalarTypes& scalartype)
 {
-	if (! std::isprint(scalartype.char_val))
-		os << "char: "<< "Non displayable" << std::endl;
+	if (scalartype.char_val == -1)
+		os << "char: " << "Overflow!!"<< std::endl;
+	else if (! std::isprint(scalartype.char_val))
+		os << "char: "<< "Non displayable1!!" << std::endl;	
 	else
 		os << "char: " << scalartype.char_val << std::endl;
-	os << "int: " << scalartype.int_val << std::endl;
 
-	if (scalartype.double_val / 1 == static_cast<int>(scalartype.double_val))
+	if (scalartype.int_val != -1)
+		os << "int: " << scalartype.int_val << std::endl;
+	else
+		os << "int: " << "Overflow!!"<< std::endl;
+
+	//if (scalartype.double_val / 1 == static_cast<int>(scalartype.double_val))
 		os << std::setprecision(1) << std::fixed;
-	os << "float: " << scalartype.float_val << "f" << std::endl;
+
+	if (scalartype.float_val != -1)
+		os << "float: " << scalartype.float_val << "f" << std::endl;
+	else
+		os << "float: " << "Overflow!!"<< std::endl;
+
 	os << "double: " <<  scalartype.double_val << std::endl;
 	return (os);
 }
 
 
+bool show_usage(void)
+{
+	std::cout << "./convert [Scalar Type]" << std::endl;
+	return (0);
+}
+
 int main(int ac,  char **av)
 {
+	std::cout << std::numeric_limits<double>::max() << " " <<  sizeof(double)<< std::endl;
 	if (ac != 2)
-		return (1);
+		return (show_usage());
 	try
 	{
 		ScalarTypes types(av[1]);
@@ -83,7 +105,7 @@ int main(int ac,  char **av)
 	}
 	catch(const std::invalid_argument &e)
 	{
-		std::cout << "Invalid Argument!!" << std::endl;
+		std::cout << "Invalid Argument!!"; 
 	}
 	return (0);
 }
