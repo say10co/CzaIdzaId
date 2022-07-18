@@ -4,6 +4,11 @@
 #include <limits>
 #include "../inc/ScalarTypes.hpp"
 #include "../Colors.h"
+bool is_convertable(const char *str)
+{
+	(void)	str;
+	return true;
+}
 
 ScalarTypes::ScalarTypes()
 	:int_val(0), char_val(0), float_val(0), double_val(0)
@@ -18,6 +23,7 @@ ScalarTypes::ScalarTypes(const char *str)
 	:int_val(-1), char_val(-1), float_val(-1), double_val(-1)
 {
 	double_val = std::stod(str);
+	std::cout << "Double value "<< double_val << std::endl;
 	if (double_val <= std::numeric_limits<char>::max())
 		char_val = static_cast<char>(double_val);
 	if (double_val <= std::numeric_limits<int>::max())
