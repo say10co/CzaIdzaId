@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <ctype.h>
 #include "../inc/Colors.h"
 
 #define USAGE "./convert [scalar type]"
@@ -9,10 +10,41 @@ void form_output(const char *prefix, const char *sufix, const char *color)
 {
 	std::cout << MAGENTA << prefix<< " : " << DEFAULT << color << sufix <<  DEFAULT << std::endl;
 }
+bool is_pseudo(const char *str)
+{
+	const std::string pseudo_types[6] = {"-inff", "+inff","-inf", "+inf", "nanf", "nan"};
+	for (int i=0; i < 6; i++)
+	{
+		if (pseudo_types[i] == str)
+			return (true);
+	}
+	return (false);
+}
 
 bool is_convertable(const char *str)
 {
-	(void) str;
+	bool sign = false;
+	bool dot = false;
+	bool digit = false;
+	bool f = false;
+
+	int i = 0;
+	if (is_pseudo(str))
+		return (true);
+	while (str[i])
+	{
+		if (!sign && !digit && str[i+1] && (str[i] == '-' || str[i] == '+'))
+				sign = true;
+		else if (!dot && digit && str[i+1] && str[i] == '.')
+			dot = true;
+		else if (!f && dot && str[i] == 'f' && !str[i+1])
+			f = true;
+		else if (std::isdigit(str[i]))
+			digit = true;
+		else
+			return (false);
+		i++;	
+	}	
 	return (true);
 }
 
@@ -50,13 +82,11 @@ void display_conversion(const char *str)
 		std::cout << MAGENTA << "float : " << DEFAULT 
 			<< static_cast<float>(double_val) << "f" << std::endl;	
 	}
-	std::cout << MAGENTA << "double : " << DEFAULT 
-			<< double_val << "f" << std::endl;
+	std::cout << MAGENTA << "double : " << DEFAULT << double_val <<  std::endl;
 }
 
 int main(int ac, char **av)
 {
-	std::cout << std::numeric_limits<float>::min() << std::endl;
 	if (ac != 2)
 	{
 		std::cout << RED << USAGE << DEFAULT << std::endl;
@@ -71,8 +101,9 @@ int main(int ac, char **av)
 		}
 		catch(const std::exception &e)
 		{
-			std::cout << RED << NON_SCALAR << DEFAULT << std::endl; 
+			std::cout << RED << e.what() << DEFAULT << std::endl; 
 		}
 	}
+	std::cout << RED << NON_SCALAR << DEFAULT << std::endl; 
 	return (1);
 }
